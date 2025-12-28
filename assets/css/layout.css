@@ -26,7 +26,7 @@ body {
   width: 280px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 10px;
   flex-shrink: 0;
 }
 
@@ -34,9 +34,9 @@ body {
   flex-shrink: 0;
 }
 
-.site-info .avatar {
+.avatar {
   width: 100%;
-  margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 8px;
 }
 
@@ -69,6 +69,10 @@ body {
   color: var(--text-secondary);
   font-size: 0.85rem;
   line-height: 1.5;
+}
+
+.sidebar-footer .avatar {
+  display: none;
 }
 
 .sidebar-footer a {
@@ -207,8 +211,7 @@ hr {
     width: 100%;
   }
 
-  .sidebar h1,
-  .sidebar p {
+  .sidebar .site-info {
     display: none;
   }
 
@@ -234,5 +237,9 @@ hr {
   hr {
     border: none;
     height: 10px;
+  }
+
+  .site-footer .avatar {
+    display: flex;
   }
 }
