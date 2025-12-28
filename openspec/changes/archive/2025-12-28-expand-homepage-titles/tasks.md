@@ -102,7 +102,7 @@
 - ✅ Modified `.post-titles` to conditionally include `collapsed` class
 - ✅ First post (forloop.first): no `.collapsed` class (expanded by default)
 - ✅ All other posts: include `.collapsed` class (hidden by default)
-- ✅ Used Liquid `{% unless forloop.first %}` conditional logic
+- ✅ Used Liquid `{%raw%}{% unless forloop.first %}{%endraw%}` conditional logic
 - **Validation**: ✅ First post visible, others hidden on initial load
 
 ### 13. Create `assets/js/toggle.js` with toggle functionality - [x]
