@@ -46,15 +46,16 @@
               <div class="post-titles {% unless forloop.first %}collapsed{% endunless %}">
                 {% assign html_content = post.content %}
                 {% assign h2_sections = html_content | split: "<h2" %}
+                {% assign article_index = 1 %}
                 {% for section in h2_sections %}
                   {% if forloop.first == false %}
                     {% assign title_with_tag = section | split: "</h2>" | first %}
                     {% assign title_text = title_with_tag | split: ">" | last | strip_html | strip %}
                     {% unless title_text == "" %}
-                      {% assign anchor_id = title_text | downcase | replace: " ", "-" | replace: "'", "" | replace: '"', "" | replace: ":", "" | replace: ",", "" | replace: ".", "" | replace: "?", "" | replace: "!", "" | truncate: 50, "" %}
-                      <a href="{{ post.url | relative_url }}#{{ anchor_id }}" class="article-title" aria-label="阅读文章: {{ title_text }}">
+                      <a href="{{ post.url | relative_url }}#article-{{ article_index }}" class="article-title" aria-label="阅读文章: {{ title_text }}">
                         {{ title_text }}
                       </a>
+                      {% assign article_index = article_index | plus: 1 %}
                     {% endunless %}
                   {% endif %}
                 {% endfor %}

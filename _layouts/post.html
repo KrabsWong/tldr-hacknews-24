@@ -113,8 +113,9 @@
         return;
       }
 
+      // Rewrite all H2 IDs to simple sequential format (article-1, article-2, ...)
       headings.forEach((heading, index) => {
-        // Use Jekyll/kramdown generated ID (already on the heading)
+        heading.id = 'article-' + (index + 1);
 
         // Create outline item for desktop TOC
         const li = document.createElement('li');
