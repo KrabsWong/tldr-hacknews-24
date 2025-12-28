@@ -212,7 +212,8 @@ hr {
     width: 100%;
   }
 
-  .sidebar .site-info {
+  .sidebar .site-info,
+  .sidebar .sidebar-footer {
     display: none;
   }
 
