@@ -108,30 +108,42 @@
       totalPagesSpan.textContent = state.totalPages;
     }
 
-    // Update button states
+    // Update link states (add/remove disabled class)
     if (prevButton) {
-      prevButton.disabled = state.currentPage === 1;
-      prevButton.setAttribute('aria-disabled', state.currentPage === 1);
+      if (state.currentPage === 1) {
+        prevButton.classList.add('disabled');
+        prevButton.setAttribute('aria-disabled', 'true');
+      } else {
+        prevButton.classList.remove('disabled');
+        prevButton.setAttribute('aria-disabled', 'false');
+      }
     }
     if (nextButton) {
-      nextButton.disabled = state.currentPage === state.totalPages;
-      nextButton.setAttribute('aria-disabled', state.currentPage === state.totalPages);
+      if (state.currentPage === state.totalPages) {
+        nextButton.classList.add('disabled');
+        nextButton.setAttribute('aria-disabled', 'true');
+      } else {
+        nextButton.classList.remove('disabled');
+        nextButton.setAttribute('aria-disabled', 'false');
+      }
     }
   }
 
   /**
-   * Handle previous button click
+   * Handle previous link click
    */
-  function handlePrevClick() {
+  function handlePrevClick(e) {
+    e.preventDefault();
     if (state.currentPage > 1) {
       showPage(state.currentPage - 1);
     }
   }
 
   /**
-   * Handle next button click
+   * Handle next link click
    */
-  function handleNextClick() {
+  function handleNextClick(e) {
+    e.preventDefault();
     if (state.currentPage < state.totalPages) {
       showPage(state.currentPage + 1);
     }

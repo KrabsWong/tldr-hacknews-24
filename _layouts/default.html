@@ -39,16 +39,16 @@
                 <h2>{{ post.date | date: "%Y-%m-%d" }}</h2>
               </a>
               <div class="post-titles">
-                {% assign titles = post.content | split: "## " %}
-                {% for title_section in titles %}
-                  {% unless forloop.first %}
-                    {% assign title_line = title_section | truncate: 200, "" | split: "<" | first | strip %}
-                    {% unless title_line == "" %}
-                      <a href="{{ post.url | relative_url }}" class="article-title" aria-label="阅读文章: {{ title_line }}">
-                        {{ title_line }}
+                {% assign content_lines = post.content | newline_to_br | split: "<br />" %}
+                {% for line in content_lines %}
+                  {% if line contains "## " %}
+                    {% assign title_text = line | remove: "##" | strip_html | strip %}
+                    {% unless title_text == "" %}
+                      <a href="{{ post.url | relative_url }}" class="article-title" aria-label="阅读文章: {{ title_text }}">
+                        {{ title_text }}
                       </a>
                     {% endunless %}
-                  {% endunless %}
+                  {% endif %}
                 {% endfor %}
               </div>
             </li>
@@ -56,9 +56,9 @@
         </ul>
         
         <div class="pagination-controls" style="display: none;">
-          <button class="pagination-prev" aria-label="上一页" disabled>← 上一页</button>
+          <a href="#" class="pagination-prev" aria-label="上一页">← 上一页</a>
           <span class="pagination-info">第 <span id="current-page">1</span> 页 / 共 <span id="total-pages">1</span> 页</span>
-          <button class="pagination-next" aria-label="下一页">下一页 →</button>
+          <a href="#" class="pagination-next" aria-label="下一页">下一页 →</a>
         </div>
         <div aria-live="polite" class="sr-only" id="pagination-announce"></div>
       </main>
