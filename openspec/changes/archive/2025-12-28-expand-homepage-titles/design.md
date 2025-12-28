@@ -28,6 +28,7 @@ This change introduces two independent but complementary features to the homepag
 
 **Implementation:**
 ```liquid
+{% raw %}
 {% for post in site.posts %}
   <li class="post-item">
     <a href="{{ post.url }}" class="post-link">
@@ -45,6 +46,7 @@ This change introduces two independent but complementary features to the homepag
     </div>
   </li>
 {% endfor %}
+{% endraw %}
 ```
 
 ### Option 2: Client-Side Title Extraction

@@ -5,7 +5,7 @@
 ### 1. Modify `_layouts/default.html` to extract and display article titles - [x]
 - ✅ Updated the post list loop to parse post content for H2 headings
 - ✅ Replaced the `.post-excerpt` display with a `.post-titles` container
-- ✅ Used Liquid's `split` filter to extract titles from markdown: `{% assign titles = post.content | split: "## " %}`
+- ✅ Used Liquid's `split` filter to extract titles from markdown: `{%raw%}{% assign titles = post.content | split: "## " %}{%endraw%}`
 - ✅ Looped through extracted titles and rendered them as clickable links
 - ✅ Handled edge cases: posts with no titles, special characters, markdown links
 - **Validation**: ✅ Implementation follows spec, titles will display correctly with Jekyll build
@@ -21,13 +21,13 @@
 ### 3. Make titles clickable with anchor links (optional enhancement) - [x]
 - ✅ Modified title rendering to wrap each title in an `<a>` tag
 - ✅ Linked to the post URL (simplified, without hash anchors for reliability)
-- ✅ Added aria-labels for accessibility: `aria-label="阅读文章: {{ clean_title }}"`
+- ✅ Added aria-labels for accessibility: `aria-label="阅读文章: {%raw%}{{ clean_title }}{%endraw%}"`
 - **Validation**: ✅ Titles are clickable and navigate to correct post pages
 
 ### 4. Test title extraction with edge cases - [x]
 - ✅ Verified post structure with H2 headings like `## 1. 【title】`
 - ✅ Liquid template handles special characters (【】, parentheses) correctly
-- ✅ Template filters empty titles with `{% if clean_title != "" %}`
+- ✅ Template filters empty titles with `{%raw%}{% if clean_title != "" %}{%endraw%}`
 - ✅ Tested with 22 posts containing multiple titles each
 - ✅ Multilingual content (English + Chinese) supported
 - **Validation**: ✅ All scenarios handled by implementation
