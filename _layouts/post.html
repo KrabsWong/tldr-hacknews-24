@@ -59,6 +59,24 @@
       Built with <a href="https://jekyllrb.com" target="_blank">Jekyll</a> and hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a>.
     </footer>
 
+    <script>
+      const root = document.documentElement;
+
+      function getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function applySystemTheme() {
+        root.removeAttribute('data-theme');
+      }
+
+      applySystemTheme();
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        applySystemTheme();
+      });
+    </script>
+
     <!-- Back to Top Button -->
     <button class="back-to-top" aria-label="回到顶部">↑</button>
 
