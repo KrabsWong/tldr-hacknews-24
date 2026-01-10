@@ -52,7 +52,7 @@
                   {% if forloop.first == false %}
                     {% assign title_with_tag = section | split: "</h2>" | first %}
                     {% assign title_text = title_with_tag | split: ">" | last | strip_html | strip %}
-                    {% assign title_clean = title_text | remove_number_prefix %}
+                    {% assign title_clean = title_text %}
                     {% unless title_text == "" %}
                       <a href="{{ post.url | relative_url }}#article-{{ article_index }}" class="article-title" aria-label="阅读文章: {{ title_clean }}">
                         {{ title_clean }}
